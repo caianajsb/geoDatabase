@@ -6,9 +6,7 @@ package View;
 
 import java.util.Date;
 import java.util.List;
-import model.Alert;
-import model.AlertService;
-import model.Cliente;
+import model.MunicipioService;
 import model.Municipio;
 import util.JPAUtil;
 
@@ -18,19 +16,15 @@ import util.JPAUtil;
  */
 public class Application {
     public static void main(String[] args) {
-       AlertService mgr = new AlertService();
-       
-       mgr.createAndStoreAlert("Aula BDGeo...", new Date(), "POINT(1 2)");
-       List<Alert> lista = mgr.listAlerts();
-       System.out.println(lista);
-       Cliente cliente = new Cliente();
-       cliente.setNome("Nome do Meu Cliente...");
-       mgr.gravarCliente(cliente);
-       
-       List<Municipio> municipios = mgr.listarMunicipiosVizinhos("Guarabira");
+       MunicipioService mgr = new MunicipioService();
+
+       List<Municipio> municipios = mgr.listarMunicipiosVizinhos("Campina Grande");
        for (Municipio m: municipios){
             System.out.println(m);
-       }      
+       }  
+       
+       double distancia = mgr.distanciaEntreMunicipios("João Pessoa", "Guarabira");
+       System.out.println(distancia);
        
        JPAUtil.close();
     }
