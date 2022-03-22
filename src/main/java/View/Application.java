@@ -16,15 +16,17 @@ import util.JPAUtil;
  */
 public class Application {
     public static void main(String[] args) {
-       MunicipioService mgr = new MunicipioService();
+       MunicipioService municipioService = new MunicipioService();
 
-       List<Municipio> municipios = mgr.listarMunicipiosVizinhos("Campina Grande");
+       List<Municipio> municipios = municipioService.listarMunicipiosVizinhos("Campina Grande");
        for (Municipio m: municipios){
             System.out.println(m);
        }  
        
-       double distancia = mgr.distanciaEntreMunicipios("João Pessoa", "Guarabira");
+       double distancia = municipioService.distanciaEntreMunicipios("João Pessoa", "Guarabira");
        System.out.println(distancia);
+       
+       
        
        JPAUtil.close();
     }
