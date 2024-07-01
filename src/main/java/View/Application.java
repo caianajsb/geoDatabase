@@ -4,7 +4,6 @@
  */
 package View;
 
-import java.util.Date;
 import java.util.List;
 import model.MunicipioService;
 import model.Municipio;
